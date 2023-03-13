@@ -65,7 +65,7 @@ app.post('/add-post', (req, res) => {
    const { title, author, text} = req.body;
    const post = {
       id: new Date(),
-      date: (new Date()).toLocaleDateString(),
+      date: (new Date())
       title,
       author,
       text,

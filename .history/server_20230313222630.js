@@ -62,15 +62,8 @@ app.get('/posts', (req, res) => {
 });
 
 app.post('/add-post', (req, res) => {
-   const { title, author, text} = req.body;
-   const post = {
-      id: new Date(),
-      date: (new Date()).toLocaleDateString(),
-      title,
-      author,
-      text,
-   };
-   res.render(createPath('post'), { post, title }) ;
+   const { title, author, post}
+   res.send(req.body);
 });
 
 app.get('/add-post', (req, res) => {

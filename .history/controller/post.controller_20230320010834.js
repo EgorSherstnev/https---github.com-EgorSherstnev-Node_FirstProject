@@ -1,8 +1,8 @@
 const db = require('../db')
 class PostController {
    async createPost(req, res) {
-      const {content, title, userId} = req.body
-      const newPost = await db.query(`INSERT INTO post (content, title, user_id) values ($1, $2, $3) RETURNING *`, [content, title, userId])
+      const {content, title, user_name} = req.body
+      const newPost = await db.query(`INSERT INTO post (content, title, user_name) values ($1, $2, $3) RETURNING *`, [content, title,  user_name])
       res.json(newPost.rows[0])
    }
    async getPostsByUser(req, res) {

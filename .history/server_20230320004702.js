@@ -62,7 +62,10 @@ app.get('/posts', (req, res) => {
    res.render(createPath('posts'), { title, posts });
 });
 
-app.use('/add-post', postRouter);
+app.post('/add-post', (req, res) => {
+   const { title, author, text} = req.body;
+   
+});
 
 app.get('/add-post', (req, res) => {
    const title = 'Add post';

@@ -8,7 +8,7 @@ create TABLE post(
    id SERIAL PRIMARY KEY,
    content VARCHAR(255),
    title VARCHAR(255),
-   user_id INTEGER,
-   FOREIGN KEY (user_id) REFERENCES person (id),
+   user_name INTEGER,
+   FOREIGN KEY (user_name) REFERENCES person (name),
    scanned_in date
 );

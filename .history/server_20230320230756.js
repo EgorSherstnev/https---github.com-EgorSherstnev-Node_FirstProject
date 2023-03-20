@@ -27,7 +27,10 @@ app.get('/', (req, res) => {
    res.render(createPath('index'), { title })
 });
 
-app.use('/contacts', contactRouter);
+app.get('/contacts', (req, res) => {
+   const title = "Contacts";
+   
+});
 
 app.get('/posts/:id', (req, res) => {
    const title = 'Post';

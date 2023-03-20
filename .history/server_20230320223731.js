@@ -27,7 +27,15 @@ app.get('/', (req, res) => {
    res.render(createPath('index'), { title })
 });
 
-app.use('/contacts', contactRouter);
+app.get('/contacts', (req, res) => {
+   const title = 'Contacts';
+   const contacts = [
+      { name: 'Youtube', link: 'http://youtube.com/YauhenKavalchuk' },
+      { name: 'Twitter', link: 'http://twitter.com/YauhenKavalchuk' },
+      { name: 'Github', link: 'http://github.com/YauhenKavalchuk' },
+   ];
+   res.render(createPath('contacts'), { contacts, title });
+});
 
 app.get('/posts/:id', (req, res) => {
    const title = 'Post';

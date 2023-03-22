@@ -1,11 +1,12 @@
 const db = require('../db');
 const path = require('path');
 
+const createPath = (page) => path.resolve("ejs-views", `${page}.ejs`);
+
 class ContactsController {
    async getContact(req, res) {
       const title = 'Contacts'
-      const cont = await db.query('SELECT * FROM contacts')
-      const contacts = cont.rows
+      const contacts = await db.query('SELECT * FROM contacts')
       res.render('contacts', {contacts, title})
    }
 }

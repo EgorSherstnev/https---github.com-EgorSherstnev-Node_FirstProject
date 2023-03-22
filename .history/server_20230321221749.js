@@ -4,6 +4,8 @@ const morgan = require('morgan');
 const postRouter = require('./routes/post.routes');
 const contactRouter = require('./routes/contacts.router');
 
+const db = require('../db'); /*db*/
+
 const app = express();
 
 app.set('view engine', 'ejs');
@@ -24,10 +26,22 @@ app.use(express.static('styles'));
 
 app.get('/', (req, res) => {
    const title = 'Home';
-   res.render('index', { title })
+   res.render(createPath('index'), { title })
 });
 
-app.use('/contacts', contactRouter);
+//app.use('/contacts', contactRouter);
+
+app.get('/contacts', (req, res) => {
+   const title = 'Contacts';
+   class ContactsController {
+      async getContact(req, res) {
+         const path = createPath("contacts");
+         const contacts = await db.query('SELECT * FROM contacts')
+         res.render(path, {contacts})
+      }
+   }
+   new ContactsController();
+});
 
 app.get('/posts/:id', (req, res) => {
    const title = 'Post';
@@ -38,7 +52,7 @@ app.get('/posts/:id', (req, res) => {
       date: '05.05.2025',
       author: 'Svarli',
    };
-   res.render('post', { title, post });
+   res.render(createPath('post'), { title, post });
 });
 
 app.get('/posts', (req, res) => {
@@ -52,20 +66,20 @@ app.get('/posts', (req, res) => {
          author: 'Svarli',
       },
    ]
-   res.render('posts', { title, posts });
+   res.render(createPath('posts'), { title, posts });
 });
 
 app.use('/add-post', postRouter);
 
 app.get('/add-post', (req, res) => {
    const title = 'Add post';
-   res.render('add-post', { title });
+   res.render(createPath('add-post'), { title });
 });
 
 app.use((req, res) => {
    const title = 'Error Page';
    res
       .status(404)
-      .render('error', { title });
+      .render(createPath('error'), { title });
 });
 

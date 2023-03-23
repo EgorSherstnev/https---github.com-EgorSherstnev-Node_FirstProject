@@ -5,7 +5,7 @@ class PostController {
       const newPost = await db.query(`INSERT INTO post (title, author, text) values ($1, $2, $3) RETURNING *`, [title, author, text])
    }
    async getPosts(req, res) {
-      const title = 'Posts'
+      const title = 'Contacts'
       const id = req.query.id
       const pos = await db.query(`select * from post`)
       const posts = pos.rows

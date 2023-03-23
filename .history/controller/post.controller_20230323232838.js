@@ -3,13 +3,13 @@ class PostController {
    async createPost(req, res) {
       const {title, author, text} = req.body
       const newPost = await db.query(`INSERT INTO post (title, author, text) values ($1, $2, $3) RETURNING *`, [title, author, text])
+      res.json(newPost.rows[0])
+      
    }
-   async getPosts(req, res) {
-      const title = 'Posts'
+   async getPostsByUser(req, res) {
       const id = req.query.id
-      const pos = await db.query(`select * from post`)
-      const posts = pos.rows
-      res.render('posts', {posts, title})
+      const posts = await db.query(`select * from post where user_id = $1`, [id])
+      res.json(posts.rows)
    }
 }
 

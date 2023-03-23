@@ -33,8 +33,6 @@ app.use('/contacts', contactRouter);
 
 app.use('/posts', postRouter);
 
-
-
 app.use('/add-post', newpostRouter);
 
 app.use((req, res) => {

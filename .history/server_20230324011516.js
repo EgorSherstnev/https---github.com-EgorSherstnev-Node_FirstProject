@@ -33,7 +33,10 @@ app.use('/contacts', contactRouter);
 
 app.use('/posts', postRouter);
 
-
+app.get('/add-post', (req, res) => {
+   const title = 'Add Post';
+   res.render('add-post', { title });
+ });
 
 app.use('/add-post', newpostRouter);
 

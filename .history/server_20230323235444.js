@@ -3,8 +3,6 @@ const path = require('path');
 const morgan = require('morgan');
 const postRouter = require('./routes/post.routes');
 const contactRouter = require('./routes/contacts.router');
-const newpostRouter = require('./routes/newpost.router')
-
 
 const app = express();
 
@@ -31,11 +29,11 @@ app.get('/', (req, res) => {
 
 app.use('/contacts', contactRouter);
 
+app.use('/posts/:id', postRouter)
+
 app.use('/posts', postRouter);
 
-
-
-app.use('/add-post', newpostRouter);
+app.use('/add-post', postRouter);
 
 app.use((req, res) => {
    const title = 'Error Page';

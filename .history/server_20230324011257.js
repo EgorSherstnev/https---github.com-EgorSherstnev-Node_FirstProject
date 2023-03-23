@@ -33,9 +33,24 @@ app.use('/contacts', contactRouter);
 
 app.use('/posts', postRouter);
 
+app.get('/add-post', (req, res) => {
+   const title = 'Add Post';
+   res.render('add-post', { title });
+ });
 
+app.post('/add-post', (req, res) => {
+   const {title, author, text} = req.body;
+   const post = {
+      id: new Date(),
+      date: (new Date()).toLocaleDateString(),
+      title,
+      author,
+      text,
+   }
+   res.render('post', { post, title})
+})
 
-app.use('/add-post', newpostRouter);
+//app.use('/add-post', newpostRouter);
 
 app.use((req, res) => {
    const title = 'Error Page';

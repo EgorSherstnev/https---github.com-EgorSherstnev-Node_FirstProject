@@ -8,13 +8,6 @@ class PostController {
       //res.send(post)
       res.render('post', { post, title });
    }
-   async deletePost(req, res) {
-      const id = req.params.id
-      const user = await db.query('DELETE FROM post where id = $1', [id])
-      const post = user.rows[0]
-      //res.json(user.rows[0])
-      res.render('post', { post, title });
-   }
 }
 
 module.exports = new PostController();

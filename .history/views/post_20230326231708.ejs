@@ -19,18 +19,5 @@
       <i class="fas fa-trash-alt" data-id="<%= post.id %>"></i>
     </button>
   </article>
-  
-  <script>
-    document.addEventListener('click', (e) => {
-      const id = e.target?.dataset?.id || null;
-      if (id) {
-        fetch(`/posts/${id}`, {
-          method: 'DELETE',
-        }).then(() => {
-          window.location.href = '/posts';
-        });
-      }
-    });
-  </script>
 </body>
 </html>

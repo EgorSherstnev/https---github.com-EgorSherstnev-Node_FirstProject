@@ -1,7 +1,6 @@
 const express = require('express');
 const path = require('path');
 const morgan = require('morgan');
-const methodOverride = require('method-override');
 const postsRouter = require('./routes/posts.routes');
 const contactRouter = require('./routes/contacts.router');
 const newpostRouter = require('./routes/newpost.router');
@@ -26,8 +25,6 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(express.static('styles'));
 
-app.use(methodOverride('_method'));
-
 app.get('/', (req, res) => {
    const title = 'Home';
    res.render('index', { title })
@@ -37,7 +34,7 @@ app.use('/contacts', contactRouter);
 
 app.use('/posts', postsRouter);
 
-app.use('/posts', postRouter);
+app.use('/posts/:id', postRouter);
 
 app.use('/add-post', newpostRouter);
 

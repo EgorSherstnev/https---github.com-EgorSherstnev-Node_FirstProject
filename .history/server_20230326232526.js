@@ -26,8 +26,6 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(express.static('styles'));
 
-app.use(methodOverride('_method'));
-
 app.get('/', (req, res) => {
    const title = 'Home';
    res.render('index', { title })

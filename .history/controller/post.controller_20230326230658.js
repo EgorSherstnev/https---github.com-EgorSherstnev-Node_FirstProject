@@ -10,10 +10,8 @@ class PostController {
    }
    async deletePost(req, res) {
       const id = req.params.id
-      const user = await db.query('DELETE FROM post where id = $1', [id])
-      const post = user.rows[0]
-      //res.json(user.rows[0])
-      res.render('post', { post, title });
+      const user = await db.query('DELETE FROM person where id = $1', [id])
+      res.json(user.rows[0])
    }
 }
 

@@ -1,7 +1,6 @@
 const express = require('express');
 const path = require('path');
 const morgan = require('morgan');
-const methodOverride = require('method-override');
 const postsRouter = require('./routes/posts.routes');
 const contactRouter = require('./routes/contacts.router');
 const newpostRouter = require('./routes/newpost.router');
@@ -25,8 +24,6 @@ app.use(morgan(':method :url :status :res[content-length] - :response-time ms'))
 app.use(express.urlencoded({ extended: false }));
 
 app.use(express.static('styles'));
-
-app.use(methodOverride('_method'));
 
 app.get('/', (req, res) => {
    const title = 'Home';

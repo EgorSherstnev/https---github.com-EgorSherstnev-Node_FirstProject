@@ -27,7 +27,7 @@
   </ul>
 
   <script>
-    document.addEventListener('click', (e) => {
+    document.addEventListener('click', (e) = > {
       const id = e.target?.dataset?.id || null;
       if (id) {
         fetch(`/posts/${id}`, {
@@ -36,7 +36,8 @@
           window.location.reload();
         });
       }
-    });
+    })
   </script>
+
 </body>
 </html>

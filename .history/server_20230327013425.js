@@ -45,8 +45,6 @@ app.use('/add-post', newpostRouter);
 
 app.use('/edit', editpostRouter);
 
-app.use(postApiRouter)
-
 app.use((req, res) => {
    const title = 'Error Page';
    res

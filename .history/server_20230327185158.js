@@ -18,9 +18,11 @@ const app = express();
 
 app.set('view engine', 'ejs');
 
+const PORT = 3000;
+
 const createPath = (page) => path.resolve(__dirname, 'ejs-views', `${page}.ejs`);
 
-app.listen(process.env.PORT, (error) => {
+app.listen(3000, (error) => {
    error ? console.log(/*errorMsg*/(error)) : console.log(/*successMsg*/(`listening port ${PORT}`));
 });
 

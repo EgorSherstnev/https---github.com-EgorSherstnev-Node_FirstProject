@@ -1,8 +1,7 @@
 const express = require('express');
-//const chalk = require('chalk');
+const chalk = require('chalk');
 const path = require('path');
 const morgan = require('morgan');
-require('dotenv').config();
 const methodOverride = require('method-override');
 const postsRouter = require('./routes/posts.routes');
 const contactRouter = require('./routes/contacts.router');
@@ -11,17 +10,19 @@ const postRouter = require('./routes/post.routes');
 const editpostRouter = require('./routes/editpost.router');
 const postApiRouter = require('./routes/api.posts.routes');
 
-// const errorMsg = chalk.bgKeyword('white').redBright;
-// const successMsg = chalk.bgKeyword('green').white;
+const errorMsg = chalk.bgKeyword('white').redBright;
+const 
 
 const app = express();
 
 app.set('view engine', 'ejs');
 
+const PORT = 3000;
+
 const createPath = (page) => path.resolve(__dirname, 'ejs-views', `${page}.ejs`);
 
-app.listen(process.env.PORT, (error) => {
-   error ? console.log(/*errorMsg*/(error)) : console.log(/*successMsg*/(`listening port ${PORT}`));
+app.listen(3000, (error) => {
+   error ? console.log(error) : console.log(`listening port ${PORT}`);
 });
 
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms'));

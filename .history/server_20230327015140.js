@@ -2,7 +2,6 @@ const express = require('express');
 //const chalk = require('chalk');
 const path = require('path');
 const morgan = require('morgan');
-require('dotenv').config();
 const methodOverride = require('method-override');
 const postsRouter = require('./routes/posts.routes');
 const contactRouter = require('./routes/contacts.router');
@@ -18,9 +17,11 @@ const app = express();
 
 app.set('view engine', 'ejs');
 
+const PORT = 3000;
+
 const createPath = (page) => path.resolve(__dirname, 'ejs-views', `${page}.ejs`);
 
-app.listen(process.env.PORT, (error) => {
+app.listen(3000, (error) => {
    error ? console.log(/*errorMsg*/(error)) : console.log(/*successMsg*/(`listening port ${PORT}`));
 });
 
